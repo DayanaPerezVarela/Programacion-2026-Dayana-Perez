@@ -15,8 +15,7 @@ menor_centro = total_centro / cantidad_centro
 # TODO: calcula promedio, rango, diferencia y porcentaje para Centro.
 menor_centro = min(ventas_centro)
 mayor_centro = max(ventas_centro)
-dia_mayor = dias[ventas_centro.index(mayor_centro)]
-print(dia_mayor, mayor_centro)
+
 
 porcentaje_centro = total_centro * 100 / meta_centro
 
