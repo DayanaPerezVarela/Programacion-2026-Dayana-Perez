@@ -1,7 +1,7 @@
 """Reto integrador: control de ingreso al Anfiteatro del CENAC.
 
-Nombre del estudiante: __________________________________________
-Fecha: ____________________
+Nombre del estudiante: ____Dayana Pérez Varela______________________________________
+Fecha: _____20/10/2026_______________
 
 Contexto:
 Se analizará el ingreso de grupos a un evento en el Anfiteatro del CENAC, Costa Rica.
@@ -40,6 +40,8 @@ Reglas:
 - Si ocupación actual + grupo <= 700, acepte el grupo.
 - Si ocupación actual + grupo > 700, rechace el grupo.
 - Las entradas inválidas se informan, pero no se cuentan como grupos rechazados por aforo.
+
+
 
 Requisitos esenciales:
 - Use una lista para grupos aceptados y otra para grupos rechazados.
@@ -103,3 +105,25 @@ Otros casos para probar:
 
 
 # Desarrolle su solución a partir de esta línea.
+capacidad = 700
+espacio = 0
+
+numero_grupos = []
+rechazados= []
+
+entradas = input("Ingrese el número de integrantes del grupo o 'fin' para terminar:").strip().lower
+
+while entradas != "fin":
+        grupo = int(entradas)
+        
+        if espacio + grupo > capacidad:
+            
+            print("Rechazado")
+            rechazados.append(grupo)
+        else:
+            print("Aceptado")
+            numero_grupos.append(grupo)
+        
+        entradas = input("Ingrese el número de integrantes del grupo o 'fin' para terminar:").strip().lower
+
+
