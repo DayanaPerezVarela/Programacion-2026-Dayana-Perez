@@ -105,25 +105,55 @@ Otros casos para probar:
 
 
 # Desarrolle su solución a partir de esta línea.
+
 capacidad = 700
-espacio = 0
+ocupacion = 0
 
-numero_grupos = []
-rechazados= []
+grupos_aceptados = []
+grupos_rechazados = []
 
-entradas = input("Ingrese el número de integrantes del grupo o 'fin' para terminar:").strip().lower
+entrada = input("Ingrese el tamaño del grupo o escriba 'fin' para terminar: ").strip().lower()
 
-while entradas != "fin":
-        grupo = int(entradas)
-        
-        if espacio + grupo > capacidad:
-            
-            print("Rechazado")
-            rechazados.append(grupo)
+while entrada != "fin":
+
+    try:
+        grupo = int(entrada)
+
+        if grupo <= 0:
+            print("Entrada inválida. Debe ingresar un número entero mayor que cero.")
+
+        elif ocupacion + grupo <= capacidad:
+            grupos_aceptados.append(grupo)
+            ocupacion = ocupacion + grupo
+
+            print(f"\nGrupo aceptado: ingresan {grupo} personas.")
+            print(f"Ocupación actual: {ocupacion}")
+            print(f"Espacios disponibles: {capacidad - ocupacion}")
+
         else:
-            print("Aceptado")
-            numero_grupos.append(grupo)
-        
-        entradas = input("Ingrese el número de integrantes del grupo o 'fin' para terminar:").strip().lower
+            grupos_rechazados.append(grupo)
+
+            print(f"\nGrupo rechazado: no hay espacio para {grupo} personas.")
+            print(f"Ocupación actual: {ocupacion}")
+            print(f"Espacios disponibles: {capacidad - ocupacion}")
+
+    except ValueError:
+        print("Entrada inválida. Ingrese un número entero mayor que cero o 'fin'.")
+
+    entrada = input("\nIngrese el tamaño del grupo o escriba 'fin' para terminar: ").strip().lower()
 
 
+# Calcular el total admitido recorriendo la lista de grupos aceptados
+total_admitido = 0
+
+for grupo in grupos_aceptados:
+    total_admitido = total_admitido + grupo
+
+
+# Reporte final
+print("\nREPORTE FINAL")
+print(f"Grupos aceptados: {len(grupos_aceptados)}")
+print(f"Grupos rechazados: {len(grupos_rechazados)}")
+print(f"Personas admitidas: {total_admitido}")
+print(f"Capacidad máxima: {capacidad}")
+print(f"Espacios disponibles: {capacidad - total_admitido}")
