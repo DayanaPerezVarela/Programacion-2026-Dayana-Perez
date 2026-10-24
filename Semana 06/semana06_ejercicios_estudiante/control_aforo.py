@@ -1,7 +1,11 @@
 """Reto integrador: control de ingreso al Anfiteatro del CENAC.
 
 Nombre del estudiante: __________________________________________
+<<<<<<< HEAD
 Fecha: 20/10/2026
+=======
+Fecha: ____________________
+>>>>>>> ea2d5c541b1c2e0ee05bf7a1406f3a74a0df5fdd
 
 Contexto:
 Se analizará el ingreso de grupos a un evento en el Anfiteatro del CENAC, Costa Rica.
