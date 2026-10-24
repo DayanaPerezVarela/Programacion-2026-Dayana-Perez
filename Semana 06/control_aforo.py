@@ -113,58 +113,60 @@ Otros casos para probar:
 
 
 # Desarrolle su solución a partir de esta línea.
-<<<<<<< HEAD
 
-capacidad = 700
-ocupacion = 0
 
+CAPACIDAD_MAXIMA = 700
+#listas 
 grupos_aceptados = []
 grupos_rechazados = []
+ocupacion = 0 
+espacio_disponible = CAPACIDAD_MAXIMA - ocupacion
 
-entrada = input("Ingrese el tamaño del grupo o escriba 'fin' para terminar: ").strip().lower()
+## 
+print("CONTROL DE INGRESO - ANFITEATRO DEL CENAC")
+print (f"Capaciidad máxima del escenario: {CAPACIDAD_MAXIMA} personas.")
+print ("Escriba 'fin' para cerrar el ingreso")
+
+
+entrada = (input("Ingrese la cantidad de personas del grupo:")).strip().lower()
 
 while entrada != "fin":
-
     try:
-        grupo = int(entrada)
+        cantidad = int(entrada)
+    except ValueError :
+        print("Entrada inválid:Escriba un número entero o 'fin para salir'")
 
-        if grupo <= 0:
-            print("Entrada inválida. Debe ingresar un número entero mayor que cero.")
-
-        elif ocupacion + grupo <= capacidad:
-            grupos_aceptados.append(grupo)
-            ocupacion = ocupacion + grupo
-
-            print(f"\nGrupo aceptado: ingresan {grupo} personas.")
-            print(f"Ocupación actual: {ocupacion}")
-            print(f"Espacios disponibles: {capacidad - ocupacion}")
-
-        else:
-            grupos_rechazados.append(grupo)
-
-            print(f"\nGrupo rechazado: no hay espacio para {grupo} personas.")
-            print(f"Ocupación actual: {ocupacion}")
-            print(f"Espacios disponibles: {capacidad - ocupacion}")
-
-    except ValueError:
-        print("Entrada inválida. Ingrese un número entero mayor que cero o 'fin'.")
-
-    entrada = input("\nIngrese el tamaño del grupo o escriba 'fin' para terminar: ").strip().lower()
-
-
-# Calcular el total admitido recorriendo la lista de grupos aceptados
+    else:
+       if cantidad <= 0:
+        print("Entrada invalida: El grupo debe de tener al menos una persona") #registra grupos acepta o rechaza
+       elif ocupacion + cantidad <= CAPACIDAD_MAXIMA:
+        grupos_aceptados.append(cantidad)
+        ocupacion += cantidad
+        espacio_disponible = CAPACIDAD_MAXIMA - ocupacion
+        print(f"Grupo aceptado: ingresan {cantidad} personas.")
+        print(f"Ocupación actual: {ocupacion}")
+        print(f"Espacios disponibles: {espacio_disponible}") 
+       else:
+        grupos_rechazados.append(cantidad)
+        print(f"Grupo rechazado: no hay espacio para {cantidad} personas.")
+        print(f"Ocupación actual: {ocupacion}")
+        print(f"Espacios disponibles: {espacio_disponible}")
+    
+    entrada = (input("\nIngrese la cantidad de personas del grupo:")).strip().lower()
 total_admitido = 0
 
 for grupo in grupos_aceptados:
-    total_admitido = total_admitido + grupo
+    total_admitido += grupo
 
 
 # Reporte final
+
 print("\nREPORTE FINAL")
 print(f"Grupos aceptados: {len(grupos_aceptados)}")
 print(f"Grupos rechazados: {len(grupos_rechazados)}")
 print(f"Personas admitidas: {total_admitido}")
-print(f"Capacidad máxima: {capacidad}")
-print(f"Espacios disponibles: {capacidad - total_admitido}")
-=======
->>>>>>> ea2d5c541b1c2e0ee05bf7a1406f3a74a0df5fdd
+print(f"Capacidad máxima: {CAPACIDAD_MAXIMA}")
+print(f"Espacios disponibles: {CAPACIDAD_MAXIMA - total_admitido}")
+    
+
+
