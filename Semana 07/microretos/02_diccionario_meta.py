@@ -5,6 +5,7 @@ Un diccionario guarda campos con nombre; cada nombre es una clave.
 
 # A diferencia de ventas[1], aquí se usa una clave como sede["meta"].
 # La lista de ventas puede ser uno de los valores del diccionario.
+#Para un dicionario se abre llave con {}, se asinga valor con : y se separa con , , y cada llave es diferente
 sede = {
     "nombre": "Soda San Pedro",
     "provincia": "San Jose",
@@ -18,8 +19,10 @@ print("Meta inicial:", sede["meta"])
 # La meta registrada cambió a 470000.
 # TODO: actualice solo el valor asociado con la clave "meta".
 
+sede["meta"] = 470000
+
 print("Meta corregida:", sede["meta"])
 print("Nombre después del cambio:", sede["nombre"])
-
+print("Total de ventas:", sum(sede["ventas"]))
 # Para explicar: ¿por qué el nombre y las ventas siguen iguales?
 # Para comprobar: la meta pasa de 450000 a 470000.

@@ -4,7 +4,12 @@ Una tupla conserva el orden como una lista, pero sus posiciones no se cambian.
 """
 
 # Este par guarda nombre y total semanal; 0 es el nombre y 1 es el total.
+#Una tupla se abre con paréntesis (), se asigna valor con = y se separa con , 
+# Una tupla no es mutable, es decir, no se puede cambiar una posición de la tupla, por eso se crea una nueva tupla con los valores actualizados.
+#   indices           0          ,   1
 par_original = ("Soda San Pedro", 462000)
+
+
 print("Nombre:", par_original[0])
 print("Total original:", par_original[1])
 
@@ -12,7 +17,8 @@ print("Total original:", par_original[1])
 # Se corrigió el total de Soda San Pedro a 470000.
 # TODO: reemplace la línea provisional por una TUPLA NUEVA con nombre y total.
 # No use par_original[1] = 470000: eso intenta modificar una tupla.
-par_corregido = par_original
+par_corregido = ("Soda San Pedro", 470000)
+par_original = par_corregido
 print("Total original después:", par_original[1])
 print("Total del nuevo par:", par_corregido[1])
 
