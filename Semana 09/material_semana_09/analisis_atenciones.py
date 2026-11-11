@@ -7,18 +7,32 @@ y luego a 3 conforme verifique cada parte con python analisis_atenciones.py.
 from lector_csv import cargar_atenciones
 
 
-ETAPA = 1
+ETAPA = 2
 
 
 def explorar_atenciones(atenciones):
     """Recibe la lista de atenciones y muestra el total, los tipos y los campos."""
     # P1. Complete el lector y compruebe el mensaje de archivo faltante.
+
     print("P1. Archivo leído correctamente.")
 
+
     # P2. Cuente las filas con un ciclo. Compruebe que obtuvo 12.
+    total_filas = 0
+
+    for fila in atenciones:
+        total_filas += 1
+
+    print(f"P2. Total de filas: {total_filas}")
+
+
 
     # P3. Ejemplo listo para ejecutar. Explique qué tipos y campos observa.
     primer_registro = atenciones[0]
+
+    print("Primer registro:", primer_registro)
+    print("Tipo de registro:", type(primer_registro))
+    print("Campos:", primer_registro.keys())
 
 
 def contar_y_limpiar(atenciones):
@@ -26,9 +40,24 @@ def contar_y_limpiar(atenciones):
     print("Etapa 2. Complete y compruebe las preguntas 4 a 8.")
     # P4. Cuente los medicamentos tal como aparecen en el CSV con .get().
     # Muestre el contador y su total.
+    conteo_medicamentos = {}
+
+    for atencion in atenciones:
+    medicamento = atencion.get("medicamento")
+
+    conteo_medicamentos[medicamento] = conteo_medicamentos.get(medicamento, 0) + 1
+
+print("Medicamentos originales:", conteo_medicamentos)
+print("Total:", sum(conteo_medicamentos.values()))
+
 
     # P5. Muestre ejemplos de espacios o mayúsculas en hospital,
     # diagnostico y medicamento.
+    for atencion in atenciones:
+    print("Hospital:", repr(atencion.get("hospital")))
+    print("Diagnóstico:", repr(atencion.get("diagnostico")))
+    print("Medicamento:", repr(atencion.get("medicamento")))
+
 
     # P6. Cuente los medicamentos con strip() y lower(). Muestre el
     # contador limpio y su total. Compare con P4.
@@ -36,7 +65,7 @@ def contar_y_limpiar(atenciones):
     # P7. Agrupe los nombres limpios con las equivalencias de la guía.
     # Complete el diccionario. La clave es la variante y el valor es
     # el nombre que conservará. El nuevo contador debe sumar 12.
-    equivalencias = {}
+ equivalencias = {}
 
     # P8. Cuente hospitales y diagnósticos con los nombres limpios.
     # Muestre ambos contadores, sus totales y la categoría más frecuente de
