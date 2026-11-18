@@ -1,12 +1,20 @@
 """Microreto independiente: crear una función que limpie un nombre."""
 
 #TODO : Aquí puede agregar un diccionario de equivalencias de nombres de medicamentos, por ejemplo: "ibuprofeno" y "paracetamol".
+EQUICALENCIAS = {
+    "ACETAMINOFEN": "ACETAMINOFÉN",
+    "PARACETAMOL": "ACETAMINOFÉN",
+    "PANADOL": "ACETAMINOFÉN",
+
+    "SALIR": "N"
+}
 
 def limpiar_nombre(nombre):
     """Devuelve nombre sin espacios en los extremos y en mayúsculas."""
     # TODO: complete el retorno del string limpio.
     nombre = nombre.strip().upper()
     #TODO: Agregue equivalente de nombres del diccionario de medicamentos, por ejemplo: "ibuprofeno" y "paracetamol".
+    nombre = EQUICALENCIAS.get(nombre, nombre)
     return nombre
 
 
